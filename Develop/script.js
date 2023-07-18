@@ -6,6 +6,7 @@ var d = new Date();
 var strDate = (d.getMonth()+1) + "/" + d.getDate() + "/" + d.getFullYear();
 var strTime = d.getHours()
 console.log(strTime)
+var saveButton = $('.saveBtn')
 
 // all the different time elements
 var hour9 = $('#hour-9')
@@ -18,10 +19,21 @@ var hour15 = $('#hour-15')
 var hour16 = $('#hour-16')
 var hour17 = $('#hour-17')
 
+// all the different text area elements
+var hour9TextArea = $('#hour9TextArea')
+var hour10TextArea = $('#hour10TextArea')
+var hour11TextArea = $('#hour11TextArea')
+var hour12TextArea = $('#hour12TextArea')
+var hour13TextArea = $('#hour13TextArea')
+var hour14TextArea = $('#hour14TextArea')
+var hour15TextArea = $('#hour15TextArea')
+var hour16TextArea = $('#hour16TextArea')
+var hour17TextArea = $('#hour17TextArea')
 
 var init = function() {
   currentDay.text("Today's Date: "+ strDate);
   determineTime();
+  document.getElementsByClassName('description9').innerText = localStorage.getItem('hour-9')
 };
 
 // This function will determine which html elements are labeled as past,
@@ -130,16 +142,28 @@ var determineTime = function() {
   }
 }
 
-// TODO: Add a listener for click events on the save button. This code should
-// use the id in the containing time-block as a key to save the user input in
-// local storage. HINT: What does `this` reference in the click listener
-// function? How can DOM traversal be used to get the "hour-x" id of the
-// time-block containing the button that was clicked? How might the id be
-// useful when saving the description in local storage?
+$(function () {
+  saveButton.on('click', function () {
+    localStorage.setItem('hour-9', hour9TextArea.val());
+    localStorage.setItem('hour-10', hour10TextArea.val());
+    localStorage.setItem('hour-11', hour11TextArea.val());
+    localStorage.setItem('hour-12', hour12TextArea.val());
+    localStorage.setItem('hour-13', hour13TextArea.val());
+    localStorage.setItem('hour-14', hour14TextArea.val());
+    localStorage.setItem('hour-15', hour15TextArea.val());
+    localStorage.setItem('hour-16', hour16TextArea.val());
+    localStorage.setItem('hour-17', hour17TextArea.val());
+  })
 
-
-// TODO: Add code to get any user input that was saved in localStorage and set
-// the values of the corresponding textarea elements. HINT: How can the id
-// attribute of each time-block be used to do this?
+  document.getElementById('hour9TextArea').innerText = localStorage.getItem('hour-9')
+  document.getElementById('hour10TextArea').innerText = localStorage.getItem('hour-10')
+  document.getElementById('hour11TextArea').innerText = localStorage.getItem('hour-11')
+  document.getElementById('hour12TextArea').innerText = localStorage.getItem('hour-12')
+  document.getElementById('hour13TextArea').innerText = localStorage.getItem('hour-13')
+  document.getElementById('hour14TextArea').innerText = localStorage.getItem('hour-14')
+  document.getElementById('hour15TextArea').innerText = localStorage.getItem('hour-15')
+  document.getElementById('hour16TextArea').innerText = localStorage.getItem('hour-16')
+  document.getElementById('hour17TextArea').innerText = localStorage.getItem('hour-17')
+})
 
 init()
