@@ -33,7 +33,6 @@ var hour17TextArea = $('#hour17TextArea')
 var init = function() {
   currentDay.text("Today's Date: "+ strDate);
   determineTime();
-  document.getElementsByClassName('description9').innerText = localStorage.getItem('hour-9')
 };
 
 // This function will determine which html elements are labeled as past,
@@ -142,6 +141,7 @@ var determineTime = function() {
   }
 }
 
+// saves user input in text ares to local storage in order to be displayed permanently
 $(function () {
   saveButton.on('click', function () {
     localStorage.setItem('hour-9', hour9TextArea.val());
